@@ -17,7 +17,6 @@ source $bp_dir/bin/common.sh
   mv ../app_src ./app_src
 )
 
-
 # Install node first, as a dependency, then install meteor & build app
 $bp_dir/bin/compile_node "$1" "$2"
 $bp_dir/bin/compile_meteor "$1" "$2"

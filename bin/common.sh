@@ -40,8 +40,8 @@ file_contents() {
 }
 
 package_json() {
-  if test -f $build_dir/package.json; then
-    local result="$(cat $build_dir/package.json | $bp_dir/vendor/jq -r $1)"
+  if test -f $build_dir/app_src/package.json; then
+    local result="$(cat $build_dir/app_src/package.json | $bp_dir/vendor/jq -r $1)"
     if [ "$result" == "null" ]; then echo ""
     else echo "$result"
     fi
