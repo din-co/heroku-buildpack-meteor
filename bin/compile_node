@@ -41,7 +41,7 @@ npm_previous=$(file_contents "$cache_dir/node/npm-version")
 
 # How does this app start?
 start_method=$(package_json ".scripts.start")
-if test -f $build_dir/Procfile; then start_method="Procfile"
+if test -f $build_dir/app_src/Procfile; then start_method="Procfile"
 elif [[ $start_method != "" ]]; then start_method="npm start"
 elif [ -f $build_dir/server.js ]; then start_method="server.js"
 else start_method=""
@@ -155,6 +155,7 @@ head "Checking startup method"
 
 if [ "$start_method" == "Procfile" ]; then
   info "Found Procfile"
+  cp $build_dir/app_src/Procfile $build_dir/Procfile
 elif [ "$start_method" == "npm start" ]; then
   info "No Procfile; Adding 'web: npm start' to new Procfile"
   echo "web: npm start" > $build_dir/Procfile
